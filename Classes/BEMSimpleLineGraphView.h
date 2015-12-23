@@ -176,6 +176,9 @@ IB_DESIGNABLE @interface BEMSimpleLineGraphView : UIView <UIGestureRecognizerDel
 /** When set to YES, the points on the Y-axis will be set to all fit in the graph view. When set to NO, the points on the Y-axis will be set with their absolute value (which means that certain points might not be visible because they are outside of the view). Default value is YES. */
 @property (nonatomic) BOOL autoScaleYAxis;
 
+/// Minimum difference between the maximum Y-axis value and mininium Y-axis value when Y-axis autoScale is active
+@property (nonatomic) CGFloat autoScaleYAxisMinDifference;
+
 
 /// The horizontal line across the graph at the average value.
 @property (strong, nonatomic) BEMAverageLine *averageLine;

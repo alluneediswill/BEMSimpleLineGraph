@@ -417,6 +417,13 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
     self.maxValue = [self getMaximumValue];
     self.minValue = [self getMinimumValue];
     
+    if ((self.maxValue-self.minValue) < fabsf(self.autoScaleYAxisMinDifference)){
+        CGFloat avgValue = (self.maxValue + self.minValue)/2;
+        CGFloat newDifference = fabsf(self.autoScaleYAxisMinDifference);
+        self.maxValue = avgValue + newDifference/2;
+        self.minValue = avgValue - newDifference/2;
+    }
+    
     // Set the Y-Axis Offset if the Y-Axis is enabled. The offset is relative to the size of the longest label on the Y-Axis.
     if (self.enableYAxisLabel) {
         NSDictionary *attributes = @{NSFontAttributeName: self.labelFont};
